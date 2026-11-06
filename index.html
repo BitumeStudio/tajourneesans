@@ -3,10 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Simulateur du quotidien</title>
-<meta name="description" content="Simulateur : retire les immigrés et vois, métier par métier, la part d'emplois concernés dans ta journée. Chiffres publics sourcés (Insee, Dares, CEPII).">
-<meta name="robots" content="index,follow">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<title>Ta journée, sans les immigrés</title>
 <style>:root{color-scheme:light}body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
 <style>
 /* Concept : une journée en colonne, un bouton qui retire des personnes, des grilles de 100 points qui se vident. */
@@ -114,10 +111,12 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem
 </style>
 </head>
 <body>
+
+
 <div class="wrap">
   <h1>Ta journée, sans les immigrés</h1>
   <p class="lead">Retire les immigrés et regarde ce que ça change dans ta journée et celle de tes proches. Chaque chiffre vient d'une statistique publique, avec sa source.</p>
-  <div class="hyp">Hypothèse affichée : aucun poste n'est repris. Chiffres 2017-2018 (recensement Insee).</div>
+  <div class="hyp">Hypothèse affichée : aucun poste n'est repris. Parts par métier issues du recensement de la population (2017 à 2020 selon la source), exploité par la Dares, l'Insee et le CEPII.</div>
 
   <section class="panel" aria-label="Réglages de la simulation">
     <div class="row">
@@ -130,7 +129,10 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem
       <span class="lbl">Où vis-tu ?</span>
       <div class="seg" role="group" aria-label="Région">
         <button type="button" data-region="idf" aria-pressed="true">Île-de-France</button>
-        <button type="button" data-region="fr" aria-pressed="false">Autre région</button>
+        <button type="button" data-region="paca" aria-pressed="false">PACA</button>
+        <button type="button" data-region="norm" aria-pressed="false">Normandie</button>
+        <button type="button" data-region="hdf" aria-pressed="false">Hauts-de-France</button>
+        <button type="button" data-region="fr" aria-pressed="false">Autre région (chiffres nationaux)</button>
       </div>
     </div>
     </div>
@@ -142,13 +144,16 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem
     <h2>À savoir avant de lire</h2>
     <ul>
       <li>Les phrases partent d'une hypothèse : on retire tous les immigrés et personne ne les remplace. Dans la réalité, des postes seraient repris, d'autres non. Aucune source ne permet de dire lesquels.</li>
-      <li>« Autre région » affiche la moyenne nationale, Île-de-France comprise. Les chiffres locaux hors Île-de-France ne sont pas publiés pour ces métiers. Les intitulés de métier diffèrent un peu d'une source à l'autre.</li>
-      <li>Les chiffres par métier datent de 2017 (France) et 2018 (Île-de-France). Ils concernent l'ensemble des immigrés, étrangers et naturalisés. Les sans-papiers ne sont pas traités ici : aucune source officielle ne les compte.</li>
+      <li>L'Île-de-France, la région Provence-Alpes-Côte d'Azur (PACA), la Normandie et les Hauts-de-France ont des chiffres propres, mais seulement pour les métiers publiés par l'Insee. Quand un métier n'a pas de chiffre régional, la carte affiche la moyenne nationale et le précise. « Autre région » affiche toujours les chiffres nationaux, sans chiffre propre à ta région. Les intitulés de métier diffèrent un peu d'une source à l'autre.</li>
+      <li>Les chiffres par métier datent de 2017 (France), 2018 (Île-de-France), 2020 (PACA, métiers de plus de 5 000 personnes dans la région) et 2021 (Normandie et Hauts-de-France). En Hauts-de-France, l'Insee mesure la part d'immigrés dans la « famille professionnelle ». Ils concernent l'ensemble des immigrés, étrangers et naturalisés. Les sans-papiers ne sont pas traités ici : aucune source officielle ne les compte.</li>
     </ul>
     <h2>Sources</h2>
     <ul>
       <li><a href="https://www.insee.fr/fr/statistiques/6546101" target="_blank" rel="noopener">Insee Analyses Île-de-France n° 160, octobre 2022</a> (recensement 2018)</li>
       <li><a href="https://dares.travail-emploi.gouv.fr/sites/default/files/603e003378fb28cf5870f021de8a0ff4/Document%20d%27%C3%A9tudes_metiers_immigr%C3%A9s.pdf" target="_blank" rel="noopener">Dares, Document d'études n° 254, septembre 2021</a>, et Dares Analyses n° 36, juillet 2021 (recensement 2017, 15-64 ans, hors Mayotte)</li>
+      <li><a href="https://www.insee.fr/fr/statistiques/7660901" target="_blank" rel="noopener">Insee Analyses Provence-Alpes-Côte d'Azur n° 119, septembre 2023</a> (recensement 2020)</li>
+      <li><a href="https://www.insee.fr/fr/statistiques/8339126" target="_blank" rel="noopener">Insee Analyses Normandie n° 136, janvier 2025</a> (recensement 2021)</li>
+      <li><a href="https://www.insee.fr/fr/statistiques/8348614" target="_blank" rel="noopener">Insee Analyses Hauts-de-France n° 188, février 2025</a> (recensement 2021)</li>
       <li><a href="https://www.cepii.fr/PDF_PUB/lettre/2022/let424.pdf" target="_blank" rel="noopener">Lettre du CEPII n° 424, février 2022</a> (recensement 2017)</li>
       <li><a href="https://www.insee.fr/fr/statistiques/8651304" target="_blank" rel="noopener">Insee Première n° 2076</a> : 7 726 000 immigrés au 1er janvier 2024, soit 11,3 % de la population</li>
     </ul>
@@ -160,6 +165,9 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem
   var INSEE = { n: "Insee IDF n° 160 (2018)", u: "https://www.insee.fr/fr/statistiques/6546101" };
   var DARES = { n: "Dares n° 254 (2017)", u: "https://dares.travail-emploi.gouv.fr/sites/default/files/603e003378fb28cf5870f021de8a0ff4/Document%20d%27%C3%A9tudes_metiers_immigr%C3%A9s.pdf" };
   var CEPII = { n: "CEPII n° 424 (2017)", u: "https://www.cepii.fr/PDF_PUB/lettre/2022/let424.pdf" };
+  var NORM = { n: "Insee Normandie n° 136 (2021)", u: "https://www.insee.fr/fr/statistiques/8339126" };
+  var HDF = { n: "Insee Hauts-de-France n° 188 (2021)", u: "https://www.insee.fr/fr/statistiques/8348614" };
+  var PACA = { n: "Insee PACA n° 119 (2020)", u: "https://www.insee.fr/fr/statistiques/7660901" };
 
   // idf : part d'immigrés dans le métier en Île-de-France ; fr : France entière (null = non publié dans nos sources)
   var CARDS = [
@@ -168,34 +176,53 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem
       fr:  { p: 12.5, range: "12 à 13", job: "éboueurs", label: "Éboueurs (le CEPII donne 12 à 13 % pour éboueurs, caissiers et vendeurs réunis)", s: CEPII } },
     { key: "creche",  time: "7 h 30", q: "Qui garde ton enfant ?", punch: "Si personne ne les remplace, tu devras garder ton enfant toi-même.",
       idf: { p: 43.6, job: "assistantes maternelles", label: "Assistantes maternelles", s: INSEE },
-      fr:  { p: 13.6, job: "assistantes maternelles", label: "Assistantes maternelles", s: DARES } },
+      fr:  { p: 13.6, job: "assistantes maternelles", label: "Assistantes maternelles", s: DARES },
+      norm: { p: 4.3, job: "assistantes maternelles", label: "Assistantes maternelles, gardiennes d'enfants, familles d'accueil", s: NORM },
+      hdf: { p: 6.0, job: "assistantes maternelles", label: "Assistantes maternelles, gardes d'enfants", s: HDF } },
     { key: "transport", time: "8 h", q: "Qui conduit pour te transporter ou te livrer ?", punch: "Es-tu prêt à attendre plus longtemps ton taxi ou ta livraison ?",
       idf: { p: 12.0, job: "conducteurs de véhicules", label: "Conducteurs de véhicules (France entière ; cette famille de métiers de l'Insee n'isole ni les VTC ni les livreurs)", s: DARES, nat: true },
       fr:  { p: 12.0, job: "conducteurs de véhicules", label: "Conducteurs de véhicules (cette famille de métiers de l'Insee n'isole ni les VTC ni les livreurs)", s: DARES } },
     { key: "bureau",  time: "9 h", q: "Qui nettoie ton bureau ?", punch: "Si personne ne les remplace, tu devras nettoyer ton bureau toi-même.",
       idf: { p: 45.8, job: "agents d'entretien", label: "Agents d'entretien", s: INSEE },
-      fr:  { p: 17.4, job: "agents d'entretien", label: "Agents d'entretien", s: DARES } },
+      fr:  { p: 17.4, job: "agents d'entretien", label: "Agents d'entretien", s: DARES },
+      paca: { p: 18, job: "agents d'entretien", label: "Agents d'entretien", s: PACA },
+      norm: { p: 13.0, job: "nettoyeurs", label: "Nettoyeurs", s: NORM },
+      hdf: { p: 14.3, job: "nettoyeurs", label: "Nettoyeurs", s: HDF } },
     { key: "chantier", time: "10 h", q: "Qui travaille sur le chantier d'en face ?", punch: "Es-tu prêt à attendre plus longtemps pour faire construire ?",
       idf: { p: 60.8, job: "ouvriers non qualifiés du gros œuvre", label: "Ouvriers non qualifiés du gros œuvre", s: INSEE },
-      fr:  { p: 27.0, job: "ouvriers non qualifiés du gros œuvre", label: "Ouvriers non qualifiés du gros œuvre", s: DARES } },
+      fr:  { p: 27.0, job: "ouvriers non qualifiés du gros œuvre", label: "Ouvriers non qualifiés du gros œuvre", s: DARES },
+      paca: { p: 37, job: "ouvriers non qualifiés du gros œuvre", label: "Ouvriers non qualifiés du gros œuvre", s: PACA },
+      norm: { p: 17.0, job: "ouvriers non qualifiés du gros œuvre", label: "Ouvriers non qualifiés du gros œuvre du bâtiment", s: NORM },
+      hdf: { p: 16.8, job: "ouvriers non qualifiés du gros œuvre", label: "Ouvriers non qualifiés du gros œuvre du bâtiment", s: HDF } },
     { key: "midi",    time: "12 h 30", q: "Qui prépare ton repas de midi ?", punch: "Si personne ne les remplace, tu devras cuisiner ton déjeuner toi-même.",
       idf: { p: 50.0, job: "cuisiniers", label: "Cuisiniers", s: INSEE },
-      fr:  { p: 22.0, job: "cuisiniers", label: "Cuisiniers", s: DARES } },
+      fr:  { p: 22.0, job: "cuisiniers", label: "Cuisiniers", s: DARES },
+      paca: { p: 21, job: "cuisiniers", label: "Cuisiniers", s: PACA },
+      norm: { p: 12.0, job: "cuisiniers", label: "Cuisiniers et commis de cuisine", s: NORM },
+      hdf: { p: 11.4, job: "cuisiniers", label: "Cuisiniers et commis de cuisine", s: HDF } },
     { key: "travaux", time: "14 h", q: "Qui répare ou rénove chez toi ?", punch: "Es-tu prêt à attendre plus longtemps pour réparer ou rénover chez toi ?",
       idf: { p: 43.2, job: "ouvriers qualifiés du second œuvre du bâtiment", label: "Ouvriers qualifiés du second œuvre du bâtiment", s: INSEE },
       fr:  { p: 14.5, job: "ouvriers qualifiés du second œuvre du bâtiment", label: "Ouvriers qualifiés du second œuvre du bâtiment", s: DARES } },
     { key: "hopital", time: "15 h", q: "Qui te soigne à l'hôpital ?", punch: "Es-tu prêt à attendre plus longtemps pour voir un médecin ?",
       idf: { p: 17, job: "médecins hospitaliers", label: "Médecins hospitaliers (France entière)", s: CEPII, nat: true },
-      fr:  { p: 17, job: "médecins hospitaliers", label: "Médecins hospitaliers", s: CEPII } },
+      fr:  { p: 17, job: "médecins hospitaliers", label: "Médecins hospitaliers", s: CEPII },
+      norm: { p: 20.4, job: "médecins hospitaliers", label: "Médecins hospitaliers sans activité libérale", s: NORM },
+      hdf: { p: 21.1, job: "médecins hospitaliers", label: "Médecins hospitaliers sans activité libérale", s: HDF } },
     { key: "parent",  time: "18 h", q: "Qui s'occupe de ton parent âgé ?", punch: "Si personne ne les remplace, tu devras t'occuper toi-même de ton parent.",
       idf: { p: 61.4, job: "aides à domicile, aides ménagères et employés de maison", label: "Aides à domicile et employés de maison", s: INSEE },
-      fr:  { p: 15.5, job: "aides à domicile et aides ménagères", label: "Aides à domicile et aides ménagères", s: DARES } },
+      fr:  { p: 15.5, job: "aides à domicile et aides ménagères", label: "Aides à domicile et aides ménagères", s: DARES },
+      paca: { p: 19, job: "aides à domicile et aides ménagères", label: "Aides à domicile et aides ménagères", s: PACA },
+      norm: { p: 7.5, job: "aides à domicile et aides ménagères", label: "Aides à domicile, aides ménagères, travailleuses familiales", s: NORM },
+      hdf: { p: 7.2, job: "aides à domicile et aides ménagères", label: "Aides à domicile, aides ménagères", s: HDF } },
     { key: "midi",    time: "20 h", q: "Qui te sert au restaurant ?", punch: "Es-tu prêt à attendre plus longtemps ton plat ?",
       idf: { p: 39.4, job: "employés et agents de maîtrise de l'hôtellerie et de la restauration", label: "Employés et agents de maîtrise de l'hôtellerie-restauration", s: INSEE },
       fr:  { p: 19.3, job: "employés et agents de maîtrise de l'hôtellerie et de la restauration", label: "Employés et agents de maîtrise de l'hôtellerie-restauration", s: DARES } },
     { key: "soir",    time: "22 h", q: "Qui assure la sécurité à la sortie du concert ?", punch: "Es-tu prêt à sortir le soir avec moins de monde pour veiller à la sécurité ?",
       idf: { p: 47.3, job: "agents de gardiennage et de sécurité", label: "Agents de gardiennage et de sécurité", s: INSEE },
-      fr:  { p: 28.4, job: "agents de gardiennage et de sécurité", label: "Agents de gardiennage et de sécurité", s: DARES } }
+      fr:  { p: 28.4, job: "agents de gardiennage et de sécurité", label: "Agents de gardiennage et de sécurité", s: DARES },
+      paca: { p: 22, job: "agents de gardiennage et de sécurité", label: "Agents de gardiennage et de sécurité", s: PACA },
+      norm: { p: 16.0, job: "agents de sécurité et de surveillance", label: "Agents civils de sécurité et de surveillance", s: NORM },
+      hdf: { p: 16.2, job: "agents de sécurité et de surveillance", label: "Agents civils de sécurité et de surveillance", s: HDF } }
   ];
   var PROCHES = {
     creche: "J'ai un enfant en crèche", bureau: "Je travaille dans un bureau", chantier: "Il y a un chantier près de chez moi",
@@ -210,11 +237,21 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem
 
   function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
 
+  function natFallback(x) {
+    var o = {};
+    for (var k in x) o[k] = x[k];
+    o.nat = true;
+    if (o.label.indexOf("France entière") < 0) o.label += " (France entière)";
+    return o;
+  }
+
+  var WHERE = { idf: "en Île-de-France", paca: "en Provence-Alpes-Côte d'Azur", norm: "en Normandie", hdf: "dans les Hauts-de-France" };
+
   function sentence(d, region) {
-    var p = d.p, where = (region === "idf" && !d.nat) ? "en Île-de-France" : "en France";
+    var p = d.p, where = d.nat ? "en France" : WHERE[region] || "en France";
     var n = Math.round(p);
     var count = d.range ? "<b>" + d.range + " " + d.job + " sur 100</b>" : (p === 50) ? "<b>1 cuisinier sur 2</b>" : "<b>" + n + " " + d.job + " sur 100</b>";
-    return "Sans remplacement, " + count + " manqueraient " + where + ".";
+    return "Sans remplacement, " + count + ((p === 50 && !d.range) ? " manquerait " : " manqueraient ") + where + ".";
   }
 
   function render() {
@@ -227,7 +264,7 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem
 
     var html = "";
     CARDS.forEach(function (c) {
-      var d = state.region === "idf" ? c.idf : c.fr;
+      var d = state.region === "idf" ? c.idf : state.region === "fr" ? c.fr : (c[state.region] || (c.fr ? natFallback(c.fr) : null));
       var na = !d;
       var gone = (!na && state.on) ? (d.range ? 12 : Math.round(d.p)) : 0;
       var dots = "";
@@ -260,5 +297,6 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem
   render();
 })();
 </script>
+
 </body>
 </html>
